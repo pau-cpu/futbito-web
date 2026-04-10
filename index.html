@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futbito — Monta partido en segundos</title>
+    <meta name="description" content="¿Quieres jugar a fútbol pero no encuentras suficiente gente? Con Futbito, montar un partido es cuestión de segundos.">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #f5f5f5;
+            --gray: #888;
+            --dark-gray: #1a1a1a;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            gap: 48px;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(255,255,255,0.06);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(48px, 10vw, 72px);
+            letter-spacing: 2px;
+            line-height: 0.95;
+            color: var(--white);
+        }
+
+        .tagline {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.6;
+            max-width: 440px;
+            margin: 0 auto;
+        }
+
+        .tagline strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .badges {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            height: 52px;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .feature {
+            background: var(--dark-gray);
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .feature p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .contact a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .contact a:hover {
+            opacity: 0.7;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--white);
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                gap: 40px;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="container">
+
+        <div class="logo">
+            <img src="icon.png" alt="Futbito">
+        </div>
+
+        <div class="hero">
+            <h1>FUTBITO</h1>
+            <p class="tagline">
+                ¿Quieres jugar a fútbol pero <strong>no encuentras suficiente gente</strong>? 
+                Con Futbito, montar un partido es cuestión de segundos.
+            </p>
+        </div>
+
+        <div class="badges">
+            <a href="#" target="_blank">
+                <img class="badge" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/es-es?size=250x83" alt="Descargar en App Store">
+            </a>
+            <a href="#" target="_blank">
+                <img class="badge" src="https://play.google.com/intl/en_us/badges/static/images/badges/es_badge_web_generic.png" alt="Disponible en Google Play">
+            </a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>PARTIDOS</h3>
+                <p>Crea un partido en segundos. La gente se apunta, la app monta los equipos.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📍</div>
+                <h3>PISTAS</h3>
+                <p>Gratuitas y de alquiler, todo en un mapa. Fotos, valoraciones y cómo llegar.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">👥</div>
+                <h3>EQUIPOS</h3>
+                <p>Monta tu equipo, convoca a tu plantilla y juega juntos.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⭐</div>
+                <h3>MVP</h3>
+                <p>Vota al mejor jugador después de cada partido. Sigue tus estadísticas.</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <a href="mailto:hola@futbito.app">hola@futbito.app</a>
+        </div>
+
+        <div class="footer">
+            <div class="legal-links">
+                <a href="/privacy">Privacidad</a>
+                <a href="/terms">Términos</a>
+                <a href="/support">Soporte</a>
+            </div>
+            <p>© 2026 Futbito. Girona, Catalunya.</p>
+        </div>
+
+    </div>
+</body>
+</html>
